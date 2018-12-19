@@ -18,6 +18,9 @@ class Place extends Component {
         return (place) ? (
             <div className="place">
                 <h2 className="name">{place.name}</h2>
+                <h4><em>{place.suburb}</em></h4>
+                <p>{place.style}</p>
+                <p><b>{place.price}</b></p>
             </div>
         ) : <h2>Sorry, try again!</h2>
     }

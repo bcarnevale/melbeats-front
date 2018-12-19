@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Places from './Places';
-import Place from './Place'
+import Place from './Place';
+import Form from './Form';
+import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -18,6 +20,12 @@ class App extends Component {
   //     })
   // }
 
+  handleNewPlace = (place) => {
+    axios.post('http://localhost:5000/places', place)
+      .then(resp => console.log(resp.data))
+      .catch(error => console.log(error))
+  }
+
   render() {
     // console.log(places)
     return (
@@ -28,6 +36,8 @@ class App extends Component {
             <Route exact path="/" component={Places} />
             <Route exact path="/places" component={Places} />
             <Route path="/places/:id" component={Place} />
+            <Route exact path="/" component={Form} submitForm={this.handleNewPlace} />
+            <Route exact path="/places" component={Form} submitForm={this.handleNewPlace} />
           </div>
         </BrowserRouter>
       </div>

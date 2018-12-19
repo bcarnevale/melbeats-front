@@ -65,21 +65,6 @@ class Places extends Component {
             </div>
         )
             
-        // return (
-        //     <div>
-        //         <h1>Melbourne Eateries</h1>
-        //         {
-        //             places.map((place, index) => {
-        //                 const path = `/places/${place.id}`
-        //                 return (
-        //                     <Link to={path} key={index}>
-        //                         <p>{place.name}</p>
-        //                     </Link>
-        //                 )
-        //             })
-        //         }
-        //     </div>
-        // )
     }
 
 
