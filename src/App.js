@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Places from './Places';
+import Place from './Place'
 import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={Places} />
             <Route exact path="/places" component={Places} />
+            <Route path="/places/:id" component={Place} />
           </div>
         </BrowserRouter>
       </div>
