@@ -21,6 +21,7 @@ class App extends Component {
     // console.log(places)
     return (
       <div className="App">
+        <h1>MELBOURNE EATERIES</h1>
         <BrowserRouter>
           <div>
             <Route exact path="/" component={Places} />

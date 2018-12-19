@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Places extends Component {
@@ -14,7 +14,9 @@ class Places extends Component {
         //         this.setState({ places })
         // })
         axios.get('http://localhost:5000')
-            .then(resp => console.log(resp.data))
+            .then(resp => {
+                this.setState({places: resp.data})
+            })
     }
 
 
@@ -48,21 +50,33 @@ class Places extends Component {
     render() {
         const { places } = this.state;
         console.log(places)
+
         return (
-            <div>
-                <h1>Melbourne Eateries</h1>
-                {
-                    places.map((place, index) => {
-                        const path = `/places/${place.id}`
-                        return (
-                            <Link to={path} key={index}>
-                                <p>{place.name}</p>
-                            </Link>
-                        )
-                    })
-                }
-            </div>
+            places.map((p, i) =>
+                <div key={i}>
+                    <h3 >{p.name}</h3>
+                    <h4><em>{p.suburb}</em></h4>
+                    <p>{p.style}</p>
+                    <p><b>{p.price}</b></p>
+                </div>
+            )   
         )
+            
+        // return (
+        //     <div>
+        //         <h1>Melbourne Eateries</h1>
+        //         {
+        //             places.map((place, index) => {
+        //                 const path = `/places/${place.id}`
+        //                 return (
+        //                     <Link to={path} key={index}>
+        //                         <p>{place.name}</p>
+        //                     </Link>
+        //                 )
+        //             })
+        //         }
+        //     </div>
+        // )
     }
 
 
