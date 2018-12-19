@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Places extends Component {
@@ -49,17 +49,20 @@ class Places extends Component {
 
     render() {
         const { places } = this.state;
-        console.log(places)
 
         return (
-            places.map((p, i) =>
-                <div key={i}>
-                    <h3 >{p.name}</h3>
-                    <h4><em>{p.suburb}</em></h4>
-                    <p>{p.style}</p>
-                    <p><b>{p.price}</b></p>
-                </div>
-            )   
+            <div id="allPlaces">
+                {places.map((p, i) =>
+                    <div key={i} className="place">
+                        <Link to={`/places/${p.id}`} style={{textDecoration: 'none'}}>
+                            <h3 className="name">{p.name}</h3>
+                        </Link>
+                        <h4><em>{p.suburb}</em></h4>
+                        <p>{p.style}</p>
+                        <p><b>{p.price}</b></p>
+                    </div>
+                )} 
+            </div>
         )
             
         // return (
