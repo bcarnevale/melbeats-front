@@ -11,7 +11,7 @@ class App extends Component {
   // state = { places: [] }
 
   // componentDidMount() {
-  //     const url = 'https://localhost:5000/places'
+  //     const url = 'http://localhost:5000/places'
   //     fetch(url)
   //         .then(resp => resp.json())
   //         .then(json => {
@@ -21,7 +21,7 @@ class App extends Component {
   // }
 
   handleNewPlace = (place) => {
-    axios.post('http://localhost:5000/places', place)
+    axios.post('http://localhost:5000', place)
       .then(resp => console.log(resp.data))
       .catch(error => console.log(error))
   }

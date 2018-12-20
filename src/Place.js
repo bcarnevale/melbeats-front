@@ -10,17 +10,23 @@ class Place extends Component {
                 this.setState({places: resp.data})
             })
     }
+
+    handleDelete = (place) => {
+        axios.delete(`http://localhost:5000/places/${place.id}`, place)
+          .then(resp => console.log(resp.data))
+      }
     
     render() {
         const { id } = this.props.match.params
         console.log(id)
-        const place = this.state.places.find(p => p.id == id);
+        const place = this.state.places.find(p => p.id === parseInt(id));
         return (place) ? (
             <div className="place">
                 <h2 className="name">{place.name}</h2>
                 <h4><em>{place.suburb}</em></h4>
                 <p>{place.style}</p>
                 <p><b>{place.price}</b></p>
+                <button onClick={this.handleDelete(place)}>Delete Place</button>
             </div>
         ) : <h2>Sorry, try again!</h2>
     }
