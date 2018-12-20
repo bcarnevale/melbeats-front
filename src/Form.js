@@ -8,8 +8,11 @@ class Form extends Component {
     }
 
     submitForm = (e) => {
-        e.preventDefault()
-        this.props.submitForm(this.state)
+        e.preventDefault();
+        console.log(this.props)
+        console.log(e)
+        console.log(this.state)
+        this.props.submitTheForm(this.state);
     }
 
     render() {

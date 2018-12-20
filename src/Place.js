@@ -12,14 +12,13 @@ class Place extends Component {
     }
 
     handleDelete = (place) => {
-        axios.delete(`http://localhost:5000/places/${place.id}`, place)
+        axios.delete(`http://localhost:5000/places/${place._id}`, place)
           .then(resp => console.log(resp.data))
       }
     
     render() {
-        const { id } = this.props.match.params
-        console.log(id)
-        const place = this.state.places.find(p => p.id === parseInt(id));
+        const id = this.props.match.params.id
+        const place = this.state.places.find(p => p._id === id);
         return (place) ? (
             <div className="place">
                 <h2 className="name">{place.name}</h2>
